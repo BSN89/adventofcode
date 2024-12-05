@@ -12,9 +12,8 @@ const subArrays = lines.map(line => {
 
 //----------------------------------------------
 
-
+//                                   task1
 let counter = 0
-
 const callMyall = (array) => {
     let isIncreasing = array[0] < array[1]
     let isDecreasing = array[0] > array[1]
@@ -27,7 +26,26 @@ const callMyall = (array) => {
     }
     return counterfn.every(el => el)
 }
-
 subArrays.forEach(el => callMyall(el) &&  counter++)
 
+
+//-------------------------------------------------------
+//                                    task2
+
+const filterFunc = (array) => {
+    
+    for (let i = 0; i < array.length; i++) {
+        let newArray = array.slice(0, i).concat(array.slice(i + 1))
+        if ( callMyall(newArray) ){
+            return newArray
+          }
+      }
+    return array
+}
+let counter2 = 0
+const filteredSum = subArrays.map(el => filterFunc(el) )
+filteredSum.forEach(el => callMyall(el) &&  counter2++)
+
 console.log(counter);
+console.log(counter2);
+
